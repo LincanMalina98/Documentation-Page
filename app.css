@@ -1,0 +1,210 @@
+* { 
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    font-size: 1rem; 
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+div{
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    font-size: 1rem; 
+    font-weight: 400;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+}
+
+#navbar{
+    align-self: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 17%;
+    height: 100%;
+    border-right: 4px solid rgb(123, 165, 250);
+    background-color: white;
+    opacity: 0.75;
+    flex: 1;
+    
+}
+
+#main-header{
+    border-bottom: 1px solid #535252;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(123, 165, 250);
+}
+
+nav li{
+    border-bottom: 1px solid #535252;
+    padding: 15px;
+    text-align: left;
+    color: #1f1c1c;
+
+}
+
+nav li .odd{
+    border-bottom: 1px solid #535252;
+  
+}
+
+nav ul .odd{
+   background-color:white;
+   border-bottom: 1px solid  #535252;
+
+}
+
+.nav-link{
+    font-weight: bold;
+}
+.nav-link:visited{
+    color:black;
+}
+
+.nav-link:link {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-link:hover{
+    color: rgb(123, 165, 250);
+}
+
+
+
+#main-doc{
+    width: 80%;
+    max-height: auto;
+    align-self: flex-end;
+    flex: 2;
+
+}
+
+.main-section{
+    padding-left: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.main-section header{
+    font-size: 1.6rem;
+    margin: 10px 0px 10px 0px;
+   color: rgb(123, 165, 250);
+   font-weight: bold;
+}
+
+.main-section p{
+    font-size: 1rem;
+    margin: 10px 0px 10px 20px;
+    align-self: flex-start;
+}
+
+.main-section ol{
+    margin: 10px 0px 10px 100px;
+  
+}
+
+.main-section ul{
+    margin: 10px 0px 10px 100px;
+  
+}
+
+.main-section li{
+    padding-bottom: 10px;
+}
+
+#code{
+    width: 50%;
+    align-self: center;
+    background-color:rgb(123, 165, 250) ;
+    opacity: 0.80;
+    border-radius: 5px;
+    margin: 10px 0px 10px 20px;
+    padding-top: 5px;
+}
+
+
+#code code{
+    align-self: flex-start;
+    align-items:flex-start ;
+    width: auto;
+    text-align: left;
+    margin: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+@media screen and (min-width:320px) and (max-width: 680px){
+    #navbar{
+        align-self: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 10%;
+        background-color: white;
+        opacity: 0.75;
+        flex: 1;
+        z-index: 1;
+    }
+
+    #navbar ul{
+        display: none;
+    } 
+
+
+    #main-doc{
+        width: 100%;
+        position: relative;
+        top: 10%;
+        align-self: flex-end;
+        flex: 2;
+    
+    }
+
+    nav li {
+        text-align: left;
+        color: #1f1c1c;
+    
+    }
+
+    #main-header{
+        padding: 20px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: rgb(123, 165, 250);
+    }
+}
+
+#References a:link{
+    color:  rgb(123, 165, 250);
+    text-decoration: none;
+}
+
+#References a:visited{
+    color:  rgb(123, 165, 250);
+    text-decoration: none;
+}
+
+
+#References a:hover{
+    color: rgb(123, 165, 250);
+}

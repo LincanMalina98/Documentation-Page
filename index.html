@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Technical Documentation</title>
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body>
+
+        <div id="content">
+            <nav id="navbar">
+                <header id="main-header">
+                    PHP Documentation
+                </header>
+
+                <ul>
+                    <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+                    <li class="odd"><a href="#Basic_Sintax" class="nav-link" class="a-odd">Basic Sintax</a></li>
+                    <li><a href="#Types" class="nav-link">Types</a></li>
+                    <li class="odd"><a href="#Variables" class="nav-link" class="a-odd">Variables</a></li>
+                    <li><a href="#Constants" class="nav-link">Constants</a></li>
+                    <li class="odd"><a href="#Expressions" class="nav-link" class="a-odd">Expressions</a></li>
+                    <li><a href="#Functions" class="nav-link">Functions</a></li>
+                    <li class="odd"><a href="#Classes_And_Objects" class="nav-link" class="a-odd">Classes And
+                            Objects</a>
+                    </li>
+                    <li><a href="#Namespaces" class="nav-link">Namespaces</a></li>
+                    <li class="odd"><a href="#Errors" class="nav-link" class="a-odd">Errors</a></li>
+                    <li><a href="#References" class="nav-link">References</a></li>
+                </ul>
+            </nav>
+
+            <main id="main-doc">
+                <section class="main-section" id="Introduction">
+                    <header>Introduction</header>
+                    <p>PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source
+                        general-purpose
+                        scripting language that is especially suited for web development and can be embedded into
+                        HTML.
+                    </p>
+
+                    <div id="code">
+                        <code>
+                            &#60; !DOCTYPE html&#62; <br>
+                            &#60;html&#62;<br>
+                            <br>
+                            &#60;head&#62;<br>
+                            <br>
+                            &#60;title&#62;Example&#60;&#47;title&#62;<br>
+                            <br>
+                            &#60;&#47;head&#62;<br>
+                            <br>
+                            &#60;body&#62;<br>
+                            <br>
+                            &#60;?php
+                            echo "Hi, I'm a PHP script!";
+                            ?><br>
+                            <br>
+                            &#60;&#47;body&#62;<br>
+                            <br>
+                            &#60;&#47;html&#62;<br>
+
+                        </code>
+                    </div>
+
+                    <p>Instead of lots of commands to output HTML (as seen in C or Perl), PHP pages contain HTML
+                        with
+                        embedded code that does "something" (in this case, output "Hi, I'm a PHP script!"). The
+                        PHP
+                        code
+                        is enclosed in special start and end processing instructions &#60;?php and ?&#62; that
+                        allow
+                        you
+                        to jump
+                        into and out of "PHP mode."</p>
+                </section>
+                <section class="main-section" id="Basic_Sintax">
+                    <header>Basic sintax</header>
+                    <p>When PHP parses a file, it looks for opening and closing tags, which are &#60;?php and ?&#62;
+                        which
+                        tell PHP
+                        to start and stop interpreting the code between them. Parsing in this manner allows PHP to
+                        be
+                        embedded in all sorts of different documents, as everything outside of a pair of opening and
+                        closing
+                        tags is ignored by the PHP parser.</p>
+                    <ol>
+                        <li><code>&#60;?php echo 'if you want to serve PHP code in XHTML or XML documents,
+                                use these tags'; ?&#62;</code>
+                        </li>
+                        <li><code>You can use the short echo tag to&#60;?= 'print this string' ?&#62;.
+                                It's equivalent to &#60;?php echo 'print this string' ?&#62;.</code>
+                        </li>
+                        <li>
+                            &#60;? echo 'this code is within short tags, but will only work '.
+                            'if short_open_tag is enabled'; ?&#62;
+                        </li>
+                    </ol>
+
+                    <p>Short tags (example three) are available by default but can be disabled either via the
+                        short_open_tag
+                        php.ini configuration file directive, or are disabled by default if PHP is built with the
+                        --disable-short-tags configuration.</p>
+                </section>
+                <section class="main-section" id="Types">
+                    <header>Types</header>
+                    <p>The size of an int is platform-dependent, although a maximum value of about two billion is the
+                        usual value (that's 32 bits signed). 64-bit platforms usually have a maximum value of about
+                        9E18. PHP does not support unsigned ints. int size can be determined using the constant
+                        PHP_INT_SIZE, maximum value using the constant PHP_INT_MAX, and minimum value using the constant
+                        PHP_INT_MIN.</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $a_bool = TRUE; // a boolean<br>
+                            $a_str = "foo"; // a string<br>
+                            $a_str2 = 'foo'; // a string<br>
+                            $an_int = 12; // an integer<br>
+                            <br>
+                            echo gettype($a_bool); // prints out: boolean<br>
+                            echo gettype($a_str); // prints out: string<br>
+                            <br>
+                            // If this is an integer, increment it by four<br>
+                            if (is_int($an_int)) {<br>
+                            $an_int += 4;<br>
+                            }<br>
+                            <br>
+                            // If $a_bool is a string, print it out<br>
+                            // (does not print out anything)<br>
+                            if (is_string($a_bool)) {<br>
+                            echo "String: $a_bool";<br>
+                            }<br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>There is no int division operator in PHP, to achieve this use the intdiv() function. 1/2 yields
+                        the float 0.5. The value can be cast to an int to round it towards zero, or the round() function
+                        provides finer control over rounding.</p>
+                    <p>PHP supports ten primitive types.</p>
+                    <p>Four scalar types:</p>
+                    <ul>
+                        <li>bool Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>int Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>float Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>string Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                    </ul>
+                    <p>Four compound types:</p>
+
+                    <ul>
+                        <li>array Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>object Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>acllable Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in
+                            neque rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>iterable Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in
+                            neque rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                    </ul>
+                    <p>And finally two special types:</p>
+                    <ul>
+                        <li>resorce Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in
+                            neque rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                        <li>NULL Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dolore itaque in neque
+                            rem quibusdam enim miuptates iure dolor quos voluptatibus?</li>
+                    </ul>
+                </section>
+                <section class="main-section" id="Variables">
+                    <header>Variables</header>
+                    <p>Variables in PHP are represented by a dollar sign followed by the name of the variable. The
+                        variable
+                        name is case-sensitive.
+
+                        Variable names follow the same rules as other labels in PHP. A valid variable name starts
+                        with a
+                        letter or underscore, followed by any number of letters, numbers, or underscores
+                    </p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $var = 'Bob';
+                            $Var = 'Joe';
+                            echo "$var, $Var"; // outputs "Bob, Joe"
+                            <br>
+                            $4site = 'not yet'; // invalid; starts with a number
+                            $_4site = 'not yet'; // valid; starts with an underscore
+                            $täyte = 'mansikka'; // valid; 'ä' is (Extended) ASCII 228.
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>By default, variables are always assigned by value. That is to say, when you assign an
+                        expression
+                        to
+                        a variable, the entire value of the original expression is copied into the destination
+                        variable.
+                        This means, for instance, that after assigning one variable's value to another, changing one
+                        of
+                        those variables will have no effect on the other. For more information on this kind of
+                        assignment,
+                        see the chapter on Expressions.
+                    </p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $foo = 25;
+                            $bar = &$foo; // This is a valid assignment.
+                            $bar = &(24 * 7); // Invalid; references an unnamed expression.
+                            <br>
+                            function test()<br>
+                            {<br>
+                            return 25;<br>
+                            }
+                            <br>
+                            $bar = &test(); // Invalid.
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                </section>
+                <section class="main-section" id="Constants">
+                    <header>Constants</header>
+                    <p>A constant is an identifier (name) for a simple value. As the name suggests, that value
+                        cannot
+                        change
+                        during the execution of the script (except for magic constants, which aren't actually
+                        constants).
+                        Constants are case-sensitive. By convention, constant identifiers are always uppercase.
+                    </p>
+                    <p>It is possible to define() constants with reserved or even invalid names, whose value can
+                        only be
+                        retrieved with the constant() function. However, doing so is not recommended.
+                    </p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+
+                            // Valid constant names<br>
+                            define("FOO", "something");<br>
+                            define("FOO2", "something else");<br>
+                            define("FOO_BAR", "something more");<br>
+                            <br>
+                            // Invalid constant names<br>
+                            define("2FOO", "something");<br>
+
+                            // This is valid, but should be avoided:<br>
+                            // PHP may one day provide a magical constant<br>
+                            // that will break your script<br>
+                            define("__FOO__", "something");<br>
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>Like superglobals, the scope of a constant is global. Constants can be accessed from anywhere
+                        in
+                        a
+                        script without regard to scope. For more information on scope, read the manual section on
+                        variable
+                        scope.</p>
+                </section>
+
+                <section class="main-section" id="Expressions">
+                    <header>Expressions</header>
+                    <p>Expressions are the most important building blocks of PHP. In PHP, almost anything you write
+                        is
+                        an
+                        expression. The simplest yet most accurate way to define an expression is "anything that has
+                        a
+                        value".
+
+                        The most basic forms of expressions are constants and variables. When you type "$a = 5",
+                        you're
+                        assigning '5' into $a. '5', obviously, has the value 5, or in other words '5' is an
+                        expression
+                        with
+                        the value of 5 (in this case, '5' is an integer constant).
+                    </p>
+
+                    <p>After this assignment, you'd expect $a's value to be 5 as well, so if you wrote $b = $a,
+                        you'd
+                        expect
+                        it to behave just as if you wrote $b = 5. In other words, $a is an expression with the value
+                        of
+                        5 as
+                        well. If everything works right, this is exactly what will happen.
+
+                        Slightly more complex examples for expressions are functions. For instance, consider the
+                        following
+                        function:
+                    </p>
+
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            function foo () <br>
+                            { <br>
+                            return 5; <br>
+                            } <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>Assuming you're familiar with the concept of functions (if you're not, take a look at the
+                        chapter
+                        about functions), you'd assume that typing $c = foo() is essentially just like writing $c =
+                        5,
+                        and
+                        you're right. Functions are expressions with the value of their return value. Since foo()
+                        returns 5,
+                        the value of the expression 'foo()' is 5. Usually functions don't just return a static value
+                        but
+                        compute something.
+                    </p>
+
+                    <p>There is one more expression that may seem odd if you haven't seen it in other languages, the
+                        ternary
+                        conditional operator:
+                    </p>
+                    <div id="code">
+                        <code>
+
+                            &#60;?php
+                            $first ? $second : $third
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>
+                        If the value of the first subexpression is true (non-zero), then the second subexpression is
+                        evaluated, and that is the result of the conditional expression. Otherwise, the third
+                        subexpression
+                        is evaluated, and that is the value.
+
+                        The following example should help you understand pre- and post-increment and expressions in
+                        general
+                        a bit better:
+
+                    </p>
+                    <div id="code">
+                        <code>
+
+                            &#60;?php
+                            <br>
+                            function double($i)<br>
+                            {<br>
+                            return $i*2;<br>
+                            }<br>
+                            $b = $a = 5; /* assign the value five into the variable $a and $b */<br>
+                            $c = $a++; /* post-increment, assign original value of $a<br>
+                            (5) to $c */<br>
+                            $e = $d = ++$b; /* pre-increment, assign the incremented value of<br>
+                            $b (6) to $d and $e */<br>
+                            <br>
+                            /* at this point, both $d and $e are equal to 6 */<br>
+                            <br>
+                            $f = double($d++); /* assign twice the value of $d before<br>
+                            the increment, 2*6 = 12 to $f */<br>
+                            $g = double(++$e); /* assign twice the value of $e after<br>
+                            the increment, 2*7 = 14 to $g */<br>
+                            $h = $g += 10; /* first, $g is incremented by 10 and ends with the<br>
+                            value of 24. the value of the assignment (24) is<br>
+                            then assigned into $h, and $h ends with the value<br>
+                            of 24 as well. */<br>
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                </section>
+
+                <section class="main-section" id="Functions">
+                    <header>Functions</header>
+                    <p>A function may be defined using syntax such as the following:</p>
+                    <p>Example #1 Pseudo code to demonstrate function uses</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            function foo($arg_1, $arg_2, /* ..., */ $arg_n)<br>
+                            {<br>
+                            echo "Example function.\n";<br>
+                            return $retval;<br>
+                            }<br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>Any valid PHP code may appear inside a function, even other functions and class definitions.
+
+                        Function names follow the same rules as other labels in PHP. A valid function name starts
+                        with a
+                        letter or underscore, followed by any number of letters, numbers, or underscores.
+                    </p>
+                    <p>Functions need not be defined before they are referenced, except when a function is
+                        conditionally
+                        defined as shown in the two examples below.
+
+                        When a function is defined in a conditional manner such as the two examples shown. Its
+                        definition
+                        must be processed prior to being called.
+
+                    </p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $makefoo = true;<br>
+                            <br>
+                            /* We can't call foo() from here<br>
+                            since it doesn't exist yet,
+                            but we can call bar() */
+                            <br>
+                            bar();<br>
+
+                            if ($makefoo) {<br>
+                            function foo()<br>
+                            {<br>
+                            echo "I don't exist until program execution reaches me.\n";<br>
+                            }<br>
+                            }<br>
+
+                            /* Now we can safely call foo()<br>
+                            since $makefoo evaluated to true */
+                            <br>
+                            if ($makefoo) foo();<br>
+                            <br>
+                            function bar()<br>
+                            {<br>
+                            echo "I exist immediately upon program start.\n";<br>
+                            }<br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>Example #3 Functions within functions</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            function foo()<br>
+                            {<br>
+                            function bar()<br>
+                            {<br>
+                            echo "I don't exist until foo() is called.\n";<br>
+                            }<br>
+                            }<br>
+                            <br>
+                            /* We can't call bar() yet<br>
+                            since it doesn't exist. */<br>
+                            <br>
+                            foo();<br>
+                            <br>
+                            /* Now we can call bar(),<br>
+                            foo()'s processing has
+                            made it accessible. */
+                            <br>
+                            bar();<br>
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                </section>
+                <section class="main-section" id="Classes_And_Objects">
+                    <header>Classes and Objects</header>
+                    <p>Basic class definitions begin with the keyword class, followed by a class name, followed by a
+                        pair of
+                        curly braces which enclose the definitions of the properties and methods belonging to the
+                        class.
+
+                        The class name can be any valid label, provided it is not a PHP reserved word. A valid class
+                        name
+                        starts with a letter or underscore, followed by any number of letters, numbers, or
+                        underscores.
+                    </p>
+
+                    <p>Example #1 Simple Class definition</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            class SimpleClass <br>
+                            { <br>
+                            // property declaration <br>
+                            public $var = 'a default value'; <br>
+                            <br>
+                            // method declaration <br>
+                            public function displayVar() { <br>
+                            echo $this->var; <br>
+                            } <br>
+                            } <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>Example #2 Creating an instance</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $instance = new SimpleClass();<br>
+                            <br>
+                            // This can also be done with a variable:<br>
+                            $className = 'SimpleClass';<br>
+                            $instance = new $className(); // new SimpleClass()<br>
+                            <br>
+                            ?&#62;
+                        </code>
+                    </div>
+                    <p>In the class context, it is possible to create a new object by new self and new parent.
+
+                        When assigning an already created instance of a class to a new variable, the new variable
+                        will
+                        access the same instance as the object that was assigned. This behaviour is the same when
+                        passing
+                        instances to a function. A copy of an already created object can be made by cloning it.
+                    </p>
+
+                    <p>Example #3 Object Assignment</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            $instance = new SimpleClass();
+
+                            <br>
+                            $assigned = $instance;<br>
+                            $reference =& $instance;
+                            <br>
+                            $instance->var = '$assigned will have this value';
+                            <br>
+                            $instance = null; // $instance and $reference become null
+                            <br>
+                            var_dump($instance);<br>
+                            var_dump($reference);<br>
+                            var_dump($assigned);<br>
+                            ?&#62;
+                        </code>
+                    </div>
+                </section>
+                <section class="main-section" id="Namespaces">
+                    <header>Namespaces</header>
+                    <p>What are namespaces? In the broadest definition namespaces are a way of encapsulating items.
+                        This
+                        can
+                        be seen as an abstract concept in many places. For example, in any operating system
+                        directories
+                        serve to group related files, and act as a namespace for the files within them. As a
+                        concrete
+                        example, the file foo.txt can exist in both directory /home/greg and in /home/other, but two
+                        copies
+                        of foo.txt cannot co-exist in the same directory. In addition, to access the foo.txt file
+                        outside of
+                        the /home/greg directory, we must prepend the directory name to the file name using the
+                        directory
+                        separator to get /home/greg/foo.txt. This same principle extends to namespaces in the
+                        programming
+                        world.</p>
+
+                    <p>In the PHP world, namespaces are designed to solve two problems that authors of libraries and
+                        applications encounter when creating re-usable code elements such as classes or functions:
+                    </p>
+
+                    <ol>
+                        <li>Name collisions between code you create, and internal PHP classes/functions/constants or
+                            third-party classes/functions/constants.
+                        </li>
+
+                        <li>Ability to alias (or shorten) Extra_Long_Names designed to alleviate the first problem,
+                            improving readability of source code.</li>
+
+                    </ol>
+
+                    <p>PHP Namespaces provide a way in which to group related classes, interfaces, functions and
+                        constants.
+                        Here is an example of namespace syntax in PHP:
+                    </p>
+
+                    <p>Example #1 Namespace syntax example</p>
+                    <div id="code">
+                        <code>
+                            &#60;?php
+                            <br>
+                            namespace my\name; // see "Defining Namespaces" section
+                            <br>
+                            class MyClass {}<br>
+                            function myfunction() {}<br>
+                            const MYCONST = 1;<br>
+                            <br>
+                            $a = new MyClass;<br>
+                            $c = new \my\name\MyClass; // see "Global Space" section<br>
+                            <br>
+                            $a = strlen('hi'); // see "Using namespaces: fallback to global<br>
+                            // function/constant" section<br>
+                            <br>
+                            $d = namespace\MYCONST; // see "namespace operator and __NAMESPACE__<br>
+                            // constant" section<br>
+                            $d = __NAMESPACE__ . '\MYCONST';<br>
+                            echo constant($d); // see "Namespaces and dynamic language features" section<br>
+                            ?&#62;
+                        </code>
+                    </div>
+                </section>
+                <section class="main-section" id="Errors">
+                    <header>Errors</header>
+                    <p>PHP reports errors in response to a number of internal error conditions. These may be used to
+                        signal
+                        a number of different conditions, and can be displayed and/or logged as required.
+
+                        Every error that PHP generates includes a type. A list of these error types is available,
+                        along
+                        with
+                        a short description of their behaviour and how they can be caused.
+                    </p>
+
+                    <p>Handling errors with PHP
+                        If no error handler is set, then PHP will handle any errors that occur according to its
+                        configuration. Which errors are reported and which are ignored is controlled by the
+                        error_reporting
+                        php.ini directive, or at runtime by calling error_reporting(). It is strongly recommended
+                        that
+                        the
+                        configuration directive be set, however, as some errors can occur before execution of your
+                        script
+                        begins.
+                    </p>
+
+                    <p>User error handlers
+                        If PHP's default error handling is inadequate, you can also handle many types of error with
+                        your
+                        own
+                        custom error handler by installing it with set_error_handler(). While some error types
+                        cannot be
+                        handled this way, those that can be handled can then be handled in the way that your script
+                        sees
+                        fit: for example, this can be used to show a custom error page to the user and then report
+                        more
+                        directly than via a log, such as by sending an e-mail.</p>
+                </section>
+                <section class="main-section" id="References">
+                    <header>References</header>
+                    <ul>
+                        <li>All the documentation in this page is taken from <a href="https://www.php.net/docs.php">PHP
+                                DOCS</a>
+                        </li>
+                    </ul>
+                </section>
+
+            </main>
+        </div>
+    </body>
+
+</html>
